@@ -14,6 +14,10 @@ body {
     background: linear-gradient(180deg, rgba(0,16,36,1) 0%, rgba(16,92,145,1) 46%, rgba(0,146,255,1) 100%);
 }
 
+ul li {
+    list-style: none;
+}
+
 /*=== Componentes ===*/
 .btn {
     width: 50px;
@@ -83,29 +87,29 @@ body {
     padding: 0 10px;
 }
 
-.todolist__taks-group {
+.todolist__tasks-group {
     display: flex;
     align-items: center;
     gap: 5px;
     position: relative;
 }
 
-.todolist__taks-group + .todolist__taks-group {
+.todolist__tasks-group + .todolist__tasks-group {
     margin-top: 10px;
 }
 
-.todolist__taks-group label {
+.todolist__tasks-group label {
     flex: 1;
 
     display: flex;
     align-items: center;
 }
 
-.todolist__taks-group input[type="checkbox"] {
+.todolist__tasks-group input[type="checkbox"] {
     display: none;
 }
 
-.todolist__taks-group input[type="checkbox"] + label::before {
+.todolist__tasks-group input[type="checkbox"] + label::before {
     content: '';
     width: 20px;
     height: 20px;
@@ -117,11 +121,11 @@ body {
     transition: .3s;
 }
 
-.todolist__taks-group input:checked + label::before {
+.todolist__tasks-group input:checked + label::before {
     background-color: #2a92db;
 }
 
-.todolist__taks-group label::after {
+.todolist__tasks-group label::after {
     content: '';
     position: absolute;
     display: none;
@@ -134,7 +138,7 @@ body {
     transform: rotate(45deg);
 }
 
-.todolist__taks-group input:checked + label::after {
+.todolist__tasks-group input:checked + label::after {
     display: block;
 }
 
