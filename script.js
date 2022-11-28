@@ -3,6 +3,7 @@ const addTask = document.querySelector('.btn--add')
 const ul = document.querySelector('.todolist__tasks')
 const deleteTask = document.querySelector('.delete')
 
+
 //Array que armazena as tarefas
 let tasks = []
 
@@ -39,8 +40,11 @@ function handleShowTasks() {
     ul.innerHTML = li.join("")
 }
 
+
 //evento responsavel por remover uma tarefa
 ul.addEventListener('click', function(event) { 
+    event.target.classList.toggle('is-completed')
+    
     if(event.target.classList.contains('delete')) {
         if(confirm('Deseja realmente apagar?')) {
             
