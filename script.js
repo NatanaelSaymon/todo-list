@@ -1,11 +1,26 @@
 const task = document.querySelector('.todolist__input')
 const addTask = document.querySelector('.btn--add')
 const ul = document.querySelector('.todolist__tasks')
-const btnRemove = document.querySelector('.btn--remove')
+const deleteTask = document.querySelector('.delete')
 
+//Array que armazena as tarefas
+let tasks = []
 
-const tasks = []
+//Adicionando tarefas no array de tarefas
+addTask.addEventListener("click", function(){
+    if(task.value === '') {
+        alert('Digite uma tarefa')
+        return
+    } else {
+        tasks.push(task.value)
+    }
+    
+    handleShowTasks()
+    task.value = ''
+    console.log(tasks)
+})
 
+//Função reponsavel por criar o elemento li
 function handleShowTasks() {
     const li = tasks.map(task => {
         const liMarkup = `
@@ -14,7 +29,7 @@ function handleShowTasks() {
                 <label for="${task.replace(" ", "").toLowerCase()}">
                     <span>${task}</span>
                 </label>
-                <button class="btn btn--remove">X</button>
+                <button class="btn btn--remove delete">X</button>
             </li>
         `
 
@@ -24,19 +39,26 @@ function handleShowTasks() {
     ul.innerHTML = li.join("")
 }
 
-addTask.addEventListener("click", function(){
-    if(task.value === '') {
-        alert('Digite uma task')
-        return
-    } else {
-        tasks.push(task.value)
-    }
-    
-    handleShowTasks()
-    task.value = ''
-    console.log(`${tasks}`)
-})
+//evento responsavel por remover uma tarefa
+ul.addEventListener('click', function(event) { 
+    if(event.target.classList.contains('delete')) {
+        if(confirm('Deseja realmente apagar?')) {
+            
+            const li = event.target.parentElement
 
+            let currentTask = li.querySelector('label span')
+
+            currentTask = currentTask.textContent
+
+            let tasksFiltereds = tasks.filter(task => task !== currentTask)
+
+            tasks = tasksFiltereds
+            li.remove()
+
+            console.log(tasks)
+        }
+    }
+})
 
 
 handleShowTasks()
